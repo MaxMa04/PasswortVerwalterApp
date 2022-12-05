@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PasswortVerwalterApp.Views.HomePage"
+             xmlns:Viewmodel="clr-namespace:PasswortVerwalterApp.ViewModels"
+             xmlns:Model="clr-namespace:PasswortVerwalterApp.Models"
+             Title="HomePage">
+    <ContentPage.BindingContext>
+        <Viewmodel:EintragViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="12*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="90"/>
+            </Grid.ColumnDefinitions>
+
+            <Entry Grid.Row="0">
+
+            </Entry>
+            <ImageButton CornerRadius="10" Source="lupe.png" Grid.Row="0" Grid.Column="1" BackgroundColor="Yellow"/>
+            <ImageButton CornerRadius="10" Source="plus.png" Grid.Row="0" Grid.Column="2" BackgroundColor="White" Clicked="AddEintrag"/>
+            <CollectionView HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.ColumnSpan="3" ItemsSource="{Binding Eintraege}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="Model:Eintrag">
+                        <VerticalStackLayout Margin="0,0,0,10" WidthRequest="800" HorizontalOptions="CenterAndExpand" BackgroundColor="DarkSlateGray">
+
+                            <VerticalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type Viewmodel:EintragViewModel}}, Path=SelectedItemCommand}" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                            </VerticalStackLayout.GestureRecognizers>
+                            <Label Margin="40,0" HorizontalOptions="StartAndExpand" HeightRequest="45" FontSize="Large" Text="{Binding Konto}"></Label>
+                            <Label Margin="40,0" HorizontalOptions="StartAndExpand" HeightRequest="30" FontSize="Medium" Text="{Binding EMail}"></Label>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

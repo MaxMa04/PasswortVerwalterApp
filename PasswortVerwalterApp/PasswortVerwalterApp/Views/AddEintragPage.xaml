@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PasswortVerwalterApp.Views.AddEintragPage"
+             Title="AddEintragPage">
+    <VerticalStackLayout BackgroundColor="CornflowerBlue" Padding="120">
+        <Label Margin="10" Text="Konto"></Label>
+        <Entry x:Name="konto" TextChanged="EntryKonto">
+        </Entry>
+        <Label Margin="10" Text="E-Mail"></Label>
+        <Entry x:Name="email" TextChanged="EntryEMail"></Entry>
+        <Label Margin="10" Text="Benutzername"></Label>
+        <Entry x:Name="benutzername" TextChanged="EntryBenutzername"></Entry>
+        <Label Margin="10" Text="Passwort"></Label>
+        <Entry x:Name="passwort" TextChanged="EntryPasswort"></Entry>
+        <Button HeightRequest="40" Margin="30,20" Text="Hinzufügen" Clicked="Button_Clicked">
+
+        </Button>
+    </VerticalStackLayout>
+</ContentPage>
